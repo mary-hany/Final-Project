@@ -1,0 +1,23 @@
+
+
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.hero-section{
+  height: 100vh;
+  width: 100% !important;
+    img{
+   width: 100%;
+    min-height:60%;
+    // margin-left: 10px;
+    }
+}
+
+
+#user-dropdown::after {
+  display: none;
+}

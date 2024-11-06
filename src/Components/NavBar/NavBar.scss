@@ -1,0 +1,34 @@
+
+
+.navbar-brand {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+}
+.nav-item{
+    color: #f30172e5;
+    .nav-link{
+        font-size: 1.2rem;
+        
+        font-weight: bold;
+    }
+}
+.cart{
+    color: #f30172e5;
+    font-size: 2rem;
+
+    
+}
+#user-dropdown{
+    color: #f30172e5;
+    font-size: 1.3rem;
+}
+
+   

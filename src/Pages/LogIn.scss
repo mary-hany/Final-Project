@@ -12,12 +12,17 @@ body{
   display: flex;
   justify-content: center;
   align-items: center; 
-  background-image: url("../assets/logo.jpg");
-  background-position: center;
-  background-size: cover; 
   width: 80%;
   margin: 2.5rem 0;
   border-radius: 20px;
+  
+}
+
+.img{
+  
+  margin: 2.5rem 0;
+  border-radius: 20px;
+  
   
 }
 .form{
@@ -27,18 +32,21 @@ body{
    justify-content: center; 
    border: #f7a2b0 solid 1px;
    border-radius: 20px;
-   background-color: #fcb2be;
-   padding: 1.5rem 1rem;
-  //  min-height: 90vh;
-   background-color: rgba($color: #000000, $alpha: 0.2);
    width: 100%;
    height: 100%;
+   h1{
+    text-align: center;
+    font-size:3 3rem;
+    color: #f30172e5;
+  }
 
  }
  .name , .password{
    font-size: 1rem;
    color: #e1086ef5;
    font-weight: bold;
+   margin-right: 19rem;
+  
    
  }
   
@@ -62,22 +70,18 @@ body{
    border-radius: 15px;
    border-color: #fec5c5;
    width: 80%;
-  //  margin-top: 10px;
    font-size: 1.3rem;
    outline: none;
    padding: 1rem 0.5rem ;
+   
  }
 
 
  .navigate{
 
-  background-color: #ffabab;
-  border-radius: 20px;
-  border: none;
+  
   color:#f30172e5;
-  font-size: 1rem;
-  width: 100px;
-  height: 30px;
+  font-size: 1.3rem;
   margin-top: 10px;
   &:hover{
    transition: 100ms;
@@ -98,10 +102,33 @@ body{
 
 
  @media (max-width : 768px) {
-    .form {
-      width: 1000%;
+    .register_form {
+      width: 100%;
     }
     .input {
       padding: 0.5rem;
     }
+    .name , .password{
+      font-size: 1rem;
+      margin-right: 0rem; 
+      
+    
+    }
+    .image{
+      display: none;
+
+    }
  } 
+
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+ 
+  .form {
+    width: 100%;
+  }
+  .name , .password{
+    font-size: 1rem;
+    margin-right: 0rem; 
+    
+  
+  }
+ }
