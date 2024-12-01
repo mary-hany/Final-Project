@@ -7,41 +7,57 @@ import MakeUp from "../Pages/MakeUp/MakeUp";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 import SkinCare from "../Pages/SkinCare/SkinCare";
 import Cart from "../Pages/Cart/Cart";
-
-const router = createBrowserRouter([{
+import CheckOut from "../Pages/CheckOut/CheckOut";
+import Profile from "../Pages/Profile/Profile";
+import P404 from "../Pages/P404/P404";
+const router = createBrowserRouter([
+  {
     path: "/",
     element: <Layout />,
     children: [
-        {
-            path: "/",
-            element: <Home />,
-        },
-        {
-            path: "/login",
-            element: <LogIn />,
-        },
-        {
-            path: "/register",
-            element: <Register />,
-        },
-        {
-            path: "/MakeUp",
-            element: <MakeUp />,
-        },
-        {
-            path: "/MakeUp/:id",
-            element: <SingleProduct/>,
-        },
-        {
-            path: "/SkinCare",
-            element: <SkinCare />,
-        },
-        {
-            path: "/Cart",
-            element: <Cart />,
-        },
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/MakeUp",
+        element: <MakeUp />,
+      },
+      {
+        path: "/MakeUp/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/SkinCare",
+        element: <SkinCare />,
+      },
+      {
+        path: "/Cart/:id",
+        element: <Cart />,
+      },
+      {
+        path: "/CheckOut",
+        element: <CheckOut />,
+      },
+      {
+        path: "/Profile",
+        element: <Profile />,
+      },
+      {
+        path: "*",
+        element: <P404 />,
+      },
+
     ],
-}])
+  },
+]);
 
-
-export default router
+export default router;

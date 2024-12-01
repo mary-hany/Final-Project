@@ -1,45 +1,60 @@
+
 import "./SkinCare.scss";
-
 import axios from "axios";
-import { useState } from "react";
-
-
-
+import { useEffect, useState } from "react";
+import { useCart } from "../../Components/CartContext";
+import { useRecoilState } from "recoil";
+import { $baseURL } from "../../recoilstore/index";
 
 export default function SkinCare() {
-    const [Products , setProducts] = useState([]);
-    axios.get("https://fakestoreapi.com/products").then((res)=>{
-      setProducts(res.data);
-      // console.log(res.data)
-    })
+  const [Products, setProducts] = useState([]);
+  const { addToCart } = useCart();
+  const[baseUrl] = useRecoilState($baseURL);
+  useEffect(() => {
+    axios.get(`${baseUrl}/api/skincare-products`,{
+      params: {
+        populate: "*",
+      },
+    }).then((res) => {
+      setProducts(res.data.data);
+    });
+  }, []);
 
   return (
-    <div className="col-12 ">
-    
+    <div className="col-12">
       <div className="hero-section">
-        <img src="src/assets/cosmetics(1).png" alt="" />
-      
-    </div>
-    <div className="col-12 d-flex container flex-wrap g-4">
-        {
-        Products.map((el , index)=>{
+        <img src="src/assets/cosmetics(1).png" alt="Cosmetic products" />
+      </div>
+      <div className="cards col-12 d-flex container flex-wrap g-4">
+        {Products.map((el) => (
+          <div key={el.documentId} className="card" style={{ width: "18rem"}}>
+            <img src={`${baseUrl}`+ el.image[0].url} className="card-img-top" alt={el.category} />
+            <div className="card-body">
+              <h5 className="card-title">{el.name}</h5>
+              <b className="card-text">Price: ${el.price}</b>
+              <div className="d-flex gap-3">
+                <button  className="Show" onClick={() => addToCart(el)}>
+                  
 
-          return(
-          <div key={index} className="card">
-          <div className="card" style={{width: "18rem"}}>
-  <img src={el.image} className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">{el.category}</h5>
-    <p className="card-text">price : {el.price}.</p>
-    {/* <Link to={`MakeUp/${el.id} `}  className="btn btn-primary"  > SHOW</Link> */}
-     <button className="Show"><a href={`MakeUp/${el.id}`} > Show Details</a></button>
-  </div>
-</div>
-</div>
-)
-        })}
-
+                  Add to Cart
+                </button>
+                <button  className="Show">
+                  <a href={`MakeUp/${el.id}`}>Show Details</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+

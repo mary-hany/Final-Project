@@ -1,27 +1,33 @@
 
 
 import { useNavigate, NavLink } from "react-router-dom";
-// import { Link } from "@mui/material";
 import "./NavBar.scss" ;
 import { GrCart } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { useState } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useCart } from '../CartContext';
+
 export default function NavBar() {
+
   const navigate = useNavigate();
-  const goToCart = () => {
-    navigate('/Cart'); 
-  };
+  const handleCartClick = () => {
+    navigate("/Cart"); 
+  }
+  const { cartItems } = useCart();
+
 
   const [showDropdown, setShowDropdown] = useState(false);
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+  
 
   return (
+
     <div >
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className="navbar navbar-expand-lg navbar-light  fixed-top">
         <div className="container">
           
              <NavLink className="navbar-brand" to="/">
@@ -42,16 +48,7 @@ export default function NavBar() {
          
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {/* <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/register">
-                  Register  
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/login">
-                  Login
-                </NavLink>
-              </li> */}
+              
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/Makeup">
                   MakeUp
@@ -70,13 +67,14 @@ export default function NavBar() {
             <DropdownButton show={showDropdown}  variant="light" id="user-dropdown" title={<FaRegUser />} onToggle={toggleDropdown}>
       <Dropdown.Item as={Link} to="/login">LogIn</Dropdown.Item>
       <Dropdown.Item as={Link} to="/register">Register</Dropdown.Item>
+      <Dropdown.Item as={Link} to="/Profile"> My Profile</Dropdown.Item>
     </DropdownButton>
-
-            <div  onClick={goToCart} > <GrCart/> 
-            {/* <Link className="cart d-flex gap-4" to="/Cart"><GrCart/> </Link> */}
-               </div>
-
-     
+    <div className="icon position-relative" onClick={handleCartClick} >
+                <GrCart />
+                <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger"  >
+                {cartItems.length}
+                </span>
+              </div>     
             </div>
             
           </div>
@@ -85,3 +83,5 @@ export default function NavBar() {
     </div>
   );
 }
+
+

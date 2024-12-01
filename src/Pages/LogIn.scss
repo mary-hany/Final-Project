@@ -13,9 +13,16 @@ body{
   justify-content: center;
   align-items: center; 
   width: 80%;
+  
   margin: 2.5rem 0;
   border-radius: 20px;
   
+}
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin: 10px;
+  margin-right: 20rem;
 }
 
 .img{
@@ -31,6 +38,7 @@ body{
    align-items: center;
    justify-content: center; 
    border: #f7a2b0 solid 1px;
+   box-shadow: #f7a2b0 0px 4px 10px;
    border-radius: 20px;
    width: 100%;
    height: 100%;
@@ -42,12 +50,11 @@ body{
 
  }
  .name , .password{
-   font-size: 1rem;
+   font-size: 1.2rem;
    color: #e1086ef5;
    font-weight: bold;
    margin-right: 19rem;
-  
-   
+   margin-bottom: 5px;
  }
   
  .sub{
@@ -83,10 +90,7 @@ body{
   color:#f30172e5;
   font-size: 1.3rem;
   margin-top: 10px;
-  &:hover{
-   transition: 100ms;
-     background-color:#f7a2b0;
-  }
+  
  }
    
   @mixin body ($img , $position){
@@ -118,6 +122,9 @@ body{
       display: none;
 
     }
+    .error{
+      margin-right: .5rem;
+    }
  } 
 
  @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -125,10 +132,11 @@ body{
   .form {
     width: 100%;
   }
-  .name , .password{
-    font-size: 1rem;
-    margin-right: 0rem; 
-    
-  
+    .name , .password{
+      font-size: 1rem;
+      margin-right: 0rem;
+      margin-bottom: 5px;
+    }
+   
   }
- }
+ 

@@ -1,10 +1,15 @@
 
-
+body {
+    padding-top: 80px;
+   
+  }
+  
 .navbar-brand {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
+   
     img {
         height: 100%;
         width: 100%;
@@ -20,15 +25,45 @@
         font-weight: bold;
     }
 }
-.cart{
-    color: #f30172e5;
-    font-size: 2rem;
+.cart {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 
-    
-}
+    .icon {
+      position: relative;
+      cursor: pointer;
+
+      svg {
+        font-size: 1.8rem;
+        color: #f30172e5;
+      }
+
+      .badge {
+        font-size: 0.8rem;
+        color: #fff;
+        background-color: #ff5a5f;
+        padding: 0.3rem 0.5rem;
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
+  }
 #user-dropdown{
     color: #f30172e5;
     font-size: 1.3rem;
 }
 
-   
+.navbar{
+    background-color:white;
+    height: 6rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+@media screen and (max-width: 768px) {
+    .navbar{
+        height: 10rem;
+    }
+  
+}
