@@ -1,15 +1,17 @@
 
 
-
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCart } from "../../Components/CartContext";
+import { $baseURL } from "../../recoilstore/index";
+import { useRecoilState } from "recoil";
+import Swal from "sweetalert2";
 import "./CheckOut.scss";
 
 export default function CheckOut() {
   const { cartItems, clearCart } = useCart();
-
+  const [baseUrl] = useRecoilState($baseURL);
+  const isUserLoggedIn = true; 
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -28,8 +30,21 @@ export default function CheckOut() {
         .required("Address is required"),
     }),
     onSubmit: (values, { resetForm }) => {
+      if (!isUserLoggedIn) {
+        Swal.fire({
+          icon: "warning",
+          title: "Please log in",
+          text: "You need to log in to place an order.",
+        });
+        return;
+      }
+
       console.log("Order submitted:", { ...values, cartItems });
-      alert("Order placed successfully!");
+      Swal.fire({
+        icon: "success",
+        title: "Order placed successfully ",
+        text: "Your order has been placed successfully!",
+      });
       clearCart();
       resetForm();
     },
@@ -41,13 +56,13 @@ export default function CheckOut() {
   );
 
   return (
-    <div className="CheckOut container">
-      <h1 className="text-center my-4">Checkout</h1>
+    <div className="CheckOut container" order="1">
+      <h2 className=" title text-center my-4">Checkout</h2>
       {cartItems.length === 0 ? (
         <p className="text-center">Your cart is empty!</p>
       ) : (
         <div className="checkout-content d-flex gap-4">
-          {/* Left Side - Order Summary */}
+          {/*  Order*/}
           <div className="order-summary col-md-6">
             <h4 className="mb-3"> Your Order </h4>
             <table className="table table-bordered">
@@ -64,9 +79,9 @@ export default function CheckOut() {
                 {cartItems.map((item) => (
                   <tr key={item.id}>
                     <td>
-                      <img src={item.image} alt={item.title} width="50" />
+                      <img src={`${baseUrl}` + item.image[0].url} alt={item.name} width="50" />
                     </td>
-                    <td>{item.title}</td>
+                    <td>{item.name}</td>
                     <td>${item.price.toFixed(2)}</td>
                     <td>{item.count}</td>
                     <td>${(item.price * item.count).toFixed(2)}</td>
@@ -76,7 +91,7 @@ export default function CheckOut() {
               <tfoot>
                 <tr>
                   <td colSpan="4" className="text-end">
-                    <strong>Total Price:</strong>
+                    <strong className="float-start">Total Price:</strong>
                   </td>
                   <td>
                     <strong>${totalPrice.toFixed(2)}</strong>
@@ -87,8 +102,8 @@ export default function CheckOut() {
           </div>
 
           {/* Checkout Form */}
-          <div className="checkout-form col-md-6">
-            <h4 className="mb-3">Shipping Details</h4>
+          <div className="checkout-form col-md-6" order="2">
+            <h4 className="mb-3">YOUR Details</h4>
             <form onSubmit={formik.handleSubmit}>
               <div className="form-group mb-3">
                 <label htmlFor="name">Full Name</label>
@@ -125,7 +140,7 @@ export default function CheckOut() {
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="address">Shipping Address</label>
+                <label htmlFor="address"> Address</label>
                 <textarea
                   id="address"
                   className={`form-control ${
@@ -141,8 +156,8 @@ export default function CheckOut() {
                 ) : null}
               </div>
 
-              <button type="submit" className="btn btn-primary w-100">
-                Place Order
+              <button type="submit" className="send  w-100">
+                Confirm Order
               </button>
             </form>
           </div>

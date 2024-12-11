@@ -9,24 +9,26 @@ body{
   background-color: #fcb2be;
 }
 .register_form {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  width: 80%;
-  
-  margin: 2.5rem 0;
-  border-radius: 20px;
-  
+  padding-top: 8rem;
+//  position: relative;
+//  right: 20rem;
+  Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .error {
   color: red;
   font-size: 0.9rem;
   margin: 10px;
-  margin-right: 20rem;
+  margin-right: 10rem;
 }
 
 .img{
-  
+  width: 50%;
+  height: 50%;
   margin: 2.5rem 0;
   border-radius: 20px;
   
@@ -42,18 +44,19 @@ body{
    border-radius: 20px;
    width: 100%;
    height: 100%;
-   h1{
-    text-align: center;
-    font-size:3 3rem;
-    color: #f30172e5;
-  }
-
+ 
  }
+ .title{
+  text-align: center;
+    font-size:3 3rem;
+    color: #e1086ef5;
+    font-weight: bold;
+  }
  .name , .password{
    font-size: 1.2rem;
    color: #e1086ef5;
    font-weight: bold;
-   margin-right: 19rem;
+   margin-right:12rem;
    margin-bottom: 5px;
  }
   
@@ -70,23 +73,29 @@ body{
    transition: 100ms;
      background-color:#f7a2b0;
   }
-   
-   
+ 
  }
  .input{
    border-radius: 15px;
    border-color: #fec5c5;
-   width: 80%;
-   font-size: 1.3rem;
+   width: 60%;
+   font-size: 16px;
    outline: none;
    padding: 1rem 0.5rem ;
    
  }
 
+ button{
+   cursor: pointer;
+   margin-top: 10px;
+   border-radius: 20px;
+   border: none;
+   color: white;
+   font-size: 1.3rem;
 
- .navigate{
-
-  
+ }
+ .login{
+  text-decoration: none;
   color:#f30172e5;
   font-size: 1.3rem;
   margin-top: 10px;
@@ -139,4 +148,15 @@ body{
     }
    
   }
+
+
+
+
+
+
+
+
+
+
+
  

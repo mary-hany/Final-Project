@@ -40,7 +40,7 @@ export default function Register() {
     }
 
     console.log(values);
-    navigate("/Home");
+    navigate("/");
     setSubmitting(false);
   };
 
@@ -65,7 +65,7 @@ export default function Register() {
             <div className="col-lg-6">
               <div className="register_form w-100 h-100">
                 <Form className="form h-100">
-                  <h1>Register</h1>
+                  <h2 className="title">Register</h2>
                   <p className="name">Enter Your Name</p>
                   <Field className="input" name="name" />
                   <ErrorMessage name="name" component="div" className="error" />
@@ -79,13 +79,9 @@ export default function Register() {
                   <Field className="input" name="confirmpassword" type="password" />
                   <ErrorMessage name="confirmpassword" component="div" className="error"/>
                   <b>
-                    Already Have Account?{" "}
-                    <Link className="navigate" to="/login">
-                      Login
-                    </Link>
+                    Already Have Account?
+                    <Link className="login" to="/login">Login</Link>
                   </b>
-
-                  
                   <button className="sub" type="submit" disabled={isSubmitting}>
                     Submit
                   </button>

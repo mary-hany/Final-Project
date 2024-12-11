@@ -1,5 +1,6 @@
 import "./Footer.scss";
 import { Link } from "react-router-dom";
+import logo from '../../assets/logo.png';
 
 import {
   FaEnvelope,
@@ -15,9 +16,9 @@ export default function Footer() {
         <div className=" footer  ">
           <div className=" div1 container d-flex ">
             <div className="LOGO">
-              <Link className="navbar-brand" to="/">
-                <img src="public/nav-logo.PNG" alt="" width="" />
-              </Link>
+           <Link className="navbar-brand" to="/">
+            <img src={logo} alt="logo"  className="LOGO" />
+          </Link>
               <button
                 className="navbar-toggler"
                 type="button"

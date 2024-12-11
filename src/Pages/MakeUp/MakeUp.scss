@@ -39,7 +39,7 @@
     background-color: #f30172e5;
     border-radius: 20px;
     border: none;
-    color: white;
+    color: white !important;
     font-size: 1.3rem;
     width: 150px;
     height: 40px;
@@ -52,7 +52,16 @@
     color: white;
    }
 }
-
+.input2{
+   border-radius: 5px;
+   border-color: #f30172e5;
+   padding: .5rem;
+   margin-bottom: 5px;
+}
+.select{
+    border-color: #f30172e5;
+    // color: #f30172e5;s
+}
 
 
 

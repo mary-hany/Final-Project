@@ -1,151 +1,45 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #333;
-  }
-  
-  .products-table {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .products-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .products-table th,
-  .products-table td {
-    padding: 15px;
-    text-align: left;
-    font-size: 1rem;
-  }
-  
- 
-
-  
-.text{
-    color: #f30172e5;
-    font-size: 1.6rem;
+.CheckOut{
+  margin-top: 2rem;
+  h4{
+    font-size: 1.5rem;
     font-weight: bold;
-    margin: 2rem;
+    color: #f30172e5;
+    text-transform: uppercase;
+    border-bottom: 2px solid #f30172e5;
+    padding-bottom: 1rem;
+  }
 }
-  
-  .CheckOut {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .form-control {
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 1rem;
-  }
-  
+.send{
+  background-color: #f30172e5;
+  border-color: #f30172e5;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
 
-  .form-select {
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 12px;
-    font-size: 1rem;
-  }
-  
-  .form-select:focus {
-    border-color: #28a745;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
-  }
-  
-  .payment-method-selection {
-    display: flex;
-    gap: 15px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .payment-method-selection label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-  }
-  
-  .payment-method-selection img {
-    width: 50px;
-    height: auto;
-  }
-  
-  .payment-method-selection input[type="radio"] {
-    display: none;
-  }
-  
-  .payment-method-selection input[type="radio"]:checked + label img {
-    opacity: 0.7;
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-  }
-  
-  .text-danger {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin-top: 5px;
-  }
-  
-  button[type="Send"] {
-    background-color: #f30172e5;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="Send"]:hover {
-    background-color: #d80467eb;
-  }
-  
-  @media (max-width: 767px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .products-table {
-      padding: 10px;
-    }
-  
-    .input-section {
-      padding: 10px;
-    }
-  
-    .payment-method-selection {
-      flex-direction: column;
-    }
-  
-    .payment-method-selection label {
-      width: 100%;
-      justify-content: flex-start;
-    }
-  
-    .payment-method-selection img {
-      width: 40px;
-    }
-  
-    .form-control, .form-select {
-      padding: 10px;
-    }
-  
-    button[type="Send"] {
-      padding: 10px 15px;
+
+  @media (max-width: 686px) {
+    .checkout-content {
+      flex-direction: column; 
     }
   }
-  
+
+
+.send {
+  background-color: #f30172e5;
+  border-color: #f30172e5;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e10067; 
+  }
+}

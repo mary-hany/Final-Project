@@ -10,6 +10,8 @@ import Cart from "../Pages/Cart/Cart";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Profile from "../Pages/Profile/Profile";
 import P404 from "../Pages/P404/P404";
+import Perfumes from "../Pages/Perfumes/Perfumes";
+import SpecialOffers from "../Pages/SpecialOffers/SpecialOffers";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,8 +33,21 @@ const router = createBrowserRouter([
         path: "/MakeUp",
         element: <MakeUp />,
       },
+
       {
-        path: "/MakeUp/:id",
+        path: "/MakeUp/:documentId",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/SkinCare/:documentId",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/Perfumes/:documentId",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/SpecialOffers/:documentId",
         element: <SingleProduct />,
       },
       {
@@ -40,7 +55,7 @@ const router = createBrowserRouter([
         element: <SkinCare />,
       },
       {
-        path: "/Cart/:id",
+        path: "/Cart",
         element: <Cart />,
       },
       {
@@ -52,10 +67,17 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "/Perfumes",
+        element: <Perfumes/>,
+      },
+      {
+        path: "/SpecialOffers",
+        element: <SpecialOffers />,
+      },
+      {
         path: "*",
         element: <P404 />,
       },
-
     ],
   },
 ]);

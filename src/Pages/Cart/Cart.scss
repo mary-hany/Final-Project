@@ -5,16 +5,6 @@
   }
   
   .ShoppingCart {
-    margin-top: 2rem;
-  
-    h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #f30172e5;
-      text-transform: uppercase;
-      border-bottom: 2px solid #f30172e5;
-      padding-bottom: 1rem;
-    }
   
     .container {
       padding: 2rem;
@@ -72,12 +62,48 @@
   }
   .Check{
     border: none;
-    background-color: #f30172e5;
+    // background-color: #f30172e5;
     color: white;
     gap: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 7px;
-    // font-size: 1.2rem;
     cursor: pointer;
+
+  }
+  .table {
+    text-align: center;
+  }
+  
+  .table img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; 
+  }
+  
+  
+  thead th {
+    white-space: nowrap; 
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    .ShoppingCart {
+      margin-top: 5rem;
+  
+      h1 {
+        font-size: 1.5rem;
+      }
+  
+      .container {
+        padding: 1rem;
+      }
+  
+      .summary {
+        font-size: 1rem;
+      }
+  
+      .checkout {
+        margin-top: 1rem;
+      }
+    }
 
   }

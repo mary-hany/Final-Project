@@ -1,5 +1,5 @@
 
-import "./SkinCare.scss";
+import "./SpecialOffers.scss";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useCart } from "../../Components/CartContext";
@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom"
 import ScrollToTopButton from "../../Components/ScrollButton/ScrollButton";
 
 
-export default function SkinCare() {
+export default function SpecialOffers() {
   const [baseUrl] = useRecoilState($baseURL);
   const [Products, setProducts] = useState([]);
   const { addToCart } = useCart();
@@ -18,13 +18,15 @@ export default function SkinCare() {
 
 
   useEffect(() => {
-    axios.get(`${baseUrl}api/skincare-products`,{
+    axios.get(`${baseUrl}api/offers`,{
       params: {
         populate: "*",
       },
     }).then((res) => {
       setProducts(res.data.data);
       setResults(res.data.data);
+      console.log(res.data.data);
+      
     });
   }, []);
 
@@ -32,7 +34,7 @@ export default function SkinCare() {
     <div className="col-12">
       <div className="hero-section">
         <img
-          src="src/assets/cosmetics(1).png"
+          src="src/assets/offers.png"
           alt="Cosmetic products"
           className="hero-img"
         />
@@ -59,12 +61,11 @@ export default function SkinCare() {
                  setResults(searchRes);
               }}
               >
-                <option value={-1} hidden>Choose Brand</option>
+                <option value={-1} hidden>Choose Category</option>
                 <option></option>
-                <option value={"CeeaVe"}>CeeaVe</option>
-                <option value={"SHEGLAM"}>SHEGLAM</option>
-                <option value={"Dermacy"}>Dermacy</option>
-                <option value={"CARVENCHY"}>CARVENCHY </option>
+                <option value={"Eye"}>Eye</option>
+                <option value={"Care"}>Care</option>
+                <option value={"Serums"}>Serums</option>
               </select>
       </div>
       <div className="cards col-12 d-flex container flex-wrap g-4">
@@ -73,15 +74,13 @@ export default function SkinCare() {
             <img src={`${baseUrl}`+ el.image[0].url} className="card-img-top" alt={el.category} />
             <div className="card-body">
               <h5 className="card-title">{el.name}</h5>
-              <b className="price card-text">Price: {el.price} EGP</b>
+              <b className="card-text"><span className="Oldprice">price: {el.sale}  </span> - SALE: {el.sale} EGP</b>
               <div className="d-flex gap-3">
                 <button  className="Show" onClick={() => addToCart(el) && Navigate("/Cart")}>
-                  
-
                   Add to Cart
                 </button>
                 <button  className="Show">
-                  <a href={`SkinCare/${el.documentId}`}>Show Details</a>
+                  <a href={`SpecialOffers/${el.documentId}`}>Show Details</a>
                 </button>
               </div>
             </div>

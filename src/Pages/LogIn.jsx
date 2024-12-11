@@ -1,13 +1,16 @@
+
 import "./LogIn.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function LogIn() {
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .email("Invalid email format")
+      .email("Please enter a valid email")
       .required("Email is required!"),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters long")
@@ -19,16 +22,24 @@ export default function LogIn() {
     password: "",
   };
 
-  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+  const handleLogin = async (values, { setSubmitting, setErrors }) => {
     try {
-      const response = await axios.post("http://localhost:1337/api/app-users", {
+      const response = await axios.post("http://localhost:1337/api/auth/local", {
         identifier: values.email,
         password: values.password,
       });
-      console.log("Login successful:", response.data);
+
+      console.log(response.data);
+      localStorage.setItem("UserInfo",JSON.stringify(response.data.data[0]));
+      navigate("/profile");
+      console.log(response.data.data[0]);
+      
+      //  response.data;
+
+      // localStorage.setItem("token", response.data);
+      navigate("/");
     } catch (error) {
-      console.error("Login error:", error);
-      setErrors({ server: "Login failed. Please check your credentials." });
+      setErrors({ server: error.response?.data?.error?.message || "Login failed!" });
     } finally {
       setSubmitting(false);
     }
@@ -39,9 +50,9 @@ export default function LogIn() {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, errors }) => (
           <div className="row">
             <div className="col-lg-6">
               <div className="image w-100 h-100">
@@ -55,33 +66,23 @@ export default function LogIn() {
             <div className="col-lg-6">
               <div className="register_form w-100 h-100">
                 <Form className="form h-100">
-                  <h1>LogIn</h1>
-                  
-                    <p className="name">Enter Your Email</p>
-                    <Field className="input" name="email" type="text" />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="error"
-                    />
+                  <h2 className="title" >LogIn</h2>
+
+                  <p className="name">Enter Your Email</p>
+                  <Field className="input" name="email" type="text" />
+                  <ErrorMessage name="email" component="div" className="error" />
+                
+                  <p className="name">Enter Your Password</p>
+                  <Field className="input" name="password" type="password" />
+                  <ErrorMessage  name="password" component="div" className="error"/>
                  
-                    <p className="name">  Enter Your Password</p>
-                    <Field
-                      className="input"
-                      name="password"
-                      type="password"
-                    />
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="error"
-                    />
-                 
-                  <b>
-                    dont have account?{" "}
-                    <Link className="navigate" to="/register">
-                      Sign Up
-                    </Link>
+                  {errors.server && (
+                    <div className="error">{errors.server}</div>
+                  )}
+
+                  <b> Dont have an account?
+                  <Link className="login" to="/Register">SignUp</Link>
+
                   </b>
                   <button className="sub" type="submit" disabled={isSubmitting}>
                     LogIn
@@ -95,3 +96,6 @@ export default function LogIn() {
     </div>
   );
 }
+
+
+
