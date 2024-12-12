@@ -1,5 +1,4 @@
 
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCart } from "../../Components/CartContext";
@@ -11,7 +10,7 @@ import "./CheckOut.scss";
 export default function CheckOut() {
   const { cartItems, clearCart } = useCart();
   const [baseUrl] = useRecoilState($baseURL);
-  const isUserLoggedIn = true; 
+  const userData = JSON.parse(localStorage.getItem("UserInfo"));
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -30,7 +29,7 @@ export default function CheckOut() {
         .required("Address is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      if (!isUserLoggedIn) {
+      if (!userData) {
         Swal.fire({
           icon: "warning",
           title: "Please log in",

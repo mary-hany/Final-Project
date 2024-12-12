@@ -1,19 +1,27 @@
-import "./Profile.scss"
-import { useNavigate } from 'react-router-dom';
+import "./Profile.scss";
+import { useNavigate } from "react-router-dom";
 
-export default function Profile() {
-    const navigate = useNavigate();
-   const userData = JSON.parse(localStorage.getItem("UserInfo"));
-   console.log(userData);
-
+function UserProfile({}) {
+  const userData = JSON.parse(localStorage.getItem("UserInfo"));
+  const navigate = useNavigate();
+  const handleLogOut=()=>{
+    localStorage.removeItem("UserInfo");
+    navigate("/login");
+  }
 
   return (
-    <div className="container col-12  profile col-lg-6">   
-       <h1 className="text-center" >WELCOME {userData[0].username} To Your Account</h1>
-       {/* <h2 className="text-center" >Your Address is : {userData.user_address}</h2> */}
-       {/* <h2 className="text-center" >Your phone is: {userData.user_phone}</h2> */}
-       {/* <h3>since you have logged in M&A Cosmetics Store TRY OUT OUR NEWEST COLLECTONS</h3> */}
-       <button className='b1' onClick={()=>{navigate("/")}}>SHOP NOW</button>
+    <div className="container col-12 profile col-lg-6">
+      <h3>WELCOMEـ{userData.name || userData.email} TO YOUR ACCOUNT</h3>
+      <p>
+        Embark on your journey with us now! Explore the Products available to
+        you<br/> and discover all that we have to  offerWe have so much to share
+        with you! <br/> Get ready for a new and exciting experience and to get our NEWEST OFFERS!
+      </p>
+      <button className="b1" onClick={() => navigate("/")}>
+        SHOP NOW !
+      </button>
+      <button className="b2" onClick={() => handleLogOut()}> Log Out </button>
     </div>
-  )
+  );
 }
+export default UserProfile;

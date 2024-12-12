@@ -29,15 +29,19 @@ export default function LogIn() {
         password: values.password,
       });
 
-      console.log(response.data);
-      localStorage.setItem("UserInfo",JSON.stringify(response.data.data[0]));
+      // console.log(response.data);
+      // localStorage.setItem("UserInfo",JSON.stringify(response.data.data[0]));
+      // navigate("/profile");
+      localStorage.setItem("UserInfo",JSON.stringify(values));
       navigate("/profile");
-      console.log(response.data.data[0]);
+      console.log(response.data.data);
+      console.log(values);
+      
       
       //  response.data;
 
       // localStorage.setItem("token", response.data);
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       setErrors({ server: error.response?.data?.error?.message || "Login failed!" });
     } finally {
