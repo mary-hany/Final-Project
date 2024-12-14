@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skincare_products",
+  "info": {
+    "singularName": "skincare-product",
+    "pluralName": "skincare-products",
+    "displayName": "skincare-products"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
